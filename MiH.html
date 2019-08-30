@@ -1,0 +1,62 @@
+<div fxLayout="row" fxLayout="row wrap" fxLayoutAlign="center">
+      <div fxFlex="100">
+         <mat-card>
+            <div class="mz-card-title">
+               <div fxLayout="row wrap" fxLayoutAlign="start center">
+                  <div fxFlex.gt-sm="60" fxFlex.gt-xs="60" fxFlex="100">
+                     <div fxLayout="column">
+                        <h4>{{kEs.tree}} {{lcY|translate}} {{PiG}}</h4>
+                     </div>
+                  </div>
+                  <div fxFlex.gt-sm="40" fxFlex.gt-xs="40" fxFlex="100">
+                     <span fxFlex></span>
+                     <form fxFlex="111px">
+                        <mat-form-field class="full-wid">
+                           <input type="text" placeholder="{{hLE|translate}}" matInput [formControl]="Gq0"
+                              [matAutocomplete]="auto" />
+                           <mat-autocomplete #auto="matAutocomplete">
+                              <mat-option *ngFor="let option of UpQ | async" [value]="option">
+                                 {{option}}
+                              </mat-option>
+                           </mat-autocomplete>
+                        </mat-form-field>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </mat-card>
+         <div fxLayout="row wrap" fxLayoutAlign="start stretch">
+         <div fxFlex.gt-sm="40.00%" fxFlex="100" #mzChart>
+            <mat-card class="card-full-height">
+               <div>
+                  <svg #mzSortableBARSVG></svg>
+               </div>
+            </mat-card>
+         </div>
+         <div fxFlex.gt-sm="60.00%" fxFlex="100">
+            <mat-card>
+               <div class="mz-MZCKCS">
+                  <table mat-table [dataSource]="sAN" matSort>
+               
+                     <ng-container *ngFor="let column of HJP" >
+                        <ng-container *ngIf="column != 'd'" matColumnDef="{{column}}">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{RIk[column]|translate}} </th>  
+                              <td mat-cell *matCellDef="let row"> {{row[column]}} </td>
+                        </ng-container>
+                        <ng-container *ngIf="column == 'd'" matColumnDef="d">
+                              <th mat-header-cell *matHeaderCellDef> {{RIk[column]|translate}} </th>
+                              <td mat-cell *matCellDef="let element" matTooltip="{{bOw(element)}}"> {{element.d}} </td>
+                           </ng-container> 
+                     </ng-container>
+
+                     <tr mat-header-row *matHeaderRowDef="HJP; sticky: true"></tr>
+                     <tr mat-row *matRowDef="let row; columns: HJP;"></tr>
+                  </table>
+               
+                  <mat-paginator [pageSizeOptions]="[7, 10, 25, 50, 100]"></mat-paginator>
+               </div>
+            </mat-card>
+         </div>
+         </div>
+   </div>
+</div>
